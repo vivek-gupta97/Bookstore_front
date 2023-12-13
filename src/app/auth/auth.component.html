@@ -1,0 +1,38 @@
+<div class="row">
+	<form class="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+		<h1>{{ isLogin ? 'Log in' : 'Signup' }}</h1>
+		<p>
+			<label for="email">Email</label>
+			<input id="email" type="email" name="email" ngModel required />
+		</p>
+		<p>
+			<label for="image">Password</label>
+			<input
+				id="password"
+				type="password"
+				name="password"
+				ngModel
+				required
+			/>
+		</p>
+		<p *ngIf="!isLogin">
+			<label for="image">Confirm Password</label>
+			<input
+				id="password"
+				type="password"
+				name="confirmPassword"
+				ngModel
+				required
+			/>
+		</p>
+		<div class="actions">
+			<button (click)="onSwitchMode()" type="button">
+				Switch to {{ isLogin ? 'Signup' : 'Login' }}
+			</button>
+			<button type="submit">{{ !isLogin ? 'Signup' : 'Login' }}</button>
+		</div>
+	</form>
+	<div class="alert">
+		<h3 class="errormsg" *ngIf="error">{{ error }}</h3>
+	</div>
+</div>

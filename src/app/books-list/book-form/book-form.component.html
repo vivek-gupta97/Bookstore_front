@@ -1,0 +1,56 @@
+<div class="row">
+	<form class="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+		<h1>{{ editmode ? 'Edit Book' : 'Add new Book' }}</h1>
+		<p>
+			<label for="name">Title</label>
+			<input
+				id="name"
+				type="text"
+				name="name"
+				[(ngModel)]="loadedBook.name"
+				required
+			/>
+		</p>
+		<p>
+			<label for="author">Author</label>
+			<input
+				id="author"
+				type="text"
+				name="author"
+				[(ngModel)]="loadedBook.author"
+				required
+			/>
+		</p>
+		<p>
+			<label for="category">Category</label>
+			<input
+				id="category"
+				type="text"
+				name="category"
+				[(ngModel)]="loadedBook.category"
+				required
+			/>
+		</p>
+		<p>
+			<label for="price">Price</label>
+			<input
+				id="price"
+				type="number"
+				step="0.1"
+				name="price"
+				[(ngModel)]="loadedBook.price"
+				required
+				min="0"
+			/>
+		</p>
+		<div class="actions">
+			<button type="submit" [disabled]="!f.valid">
+				{{ editmode ? 'Update' : 'Add' }} Book
+			</button>
+			<button type="button" (click)="onCancel()">Cancel</button>
+		</div>
+	</form>
+	<div class="alert">
+		<h3 class="errormsg" *ngIf="error">{{ error }}</h3>
+	</div>
+</div>

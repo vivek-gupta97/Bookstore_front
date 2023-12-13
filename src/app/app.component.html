@@ -1,0 +1,9 @@
+<div class="container">
+	<div class="nav">
+		<h1 class="logo" [routerLink]="['/']">Book Store</h1>
+		<button *ngIf="isLoggedIn" (click)="onLogout()">Logout</button>
+	</div>
+	<div class="main">
+		<router-outlet></router-outlet>
+	</div>
+</div>

@@ -1,0 +1,13 @@
+<div class="row">
+	<button [routerLink]="['new']">Add Book</button>
+</div>
+<div class="grid" *ngIf="books.length">
+	<app-book
+		*ngFor="let book of books; let i = index"
+		[book]="book"
+		[index_no]="i"
+	></app-book>
+</div>
+<div>
+	<h1 *ngIf="!books.length">No books found</h1>
+</div>
